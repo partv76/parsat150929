@@ -1,9 +1,9 @@
 language: java
 jdk:
-  - openjdk7
+  - openjdk6
 services:
   - redis-server
-install: ant -buildfile build.xml  
+script: ant -buildfile build.xml  
 deploy:
    edge: true
    provider: cloudfoundry
