@@ -1,0 +1,5 @@
+applications:
+- name: autocomplete
+  instances: 1
+  host: parthasathya
+  path: build/autocomplete.war

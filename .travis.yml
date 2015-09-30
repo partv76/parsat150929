@@ -3,6 +3,7 @@ jdk:
   - openjdk6
 services:
   - redis-server
+script: ant -buildfile build.xml  
 deploy:
    edge: true
    provider: cloudfoundry
