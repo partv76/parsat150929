@@ -45,7 +45,7 @@
       $('#my-input').typeahead({
         //name: 'countries',
 
-        // data source
+        // data source 
         //prefetch: 'data/countries.json',
 		
 		local: <%= value%>,
