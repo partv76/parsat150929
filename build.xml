@@ -7,6 +7,7 @@
     <property environment="env"/>
     <property name="ECLIPSE_HOME" value="D:/eclipse-jee-kepler-SR2-win32-x86_64/eclipse"/>
     <property name="debuglevel" value="source,lines,vars"/>
+
     <property name="target" value="1.6"/>
     <property name="source" value="1.6"/>
     <path id="Apache Tomcat v6.0 [Apache Tomcat v6.0].libraryclasspath">
