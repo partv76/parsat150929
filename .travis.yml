@@ -10,5 +10,5 @@ deploy:
    username: parthasarathy.x.veerabaghu@verizon.com
    password: Shiva!@#
    api: https://api.run.pivotal.io
-   org: prjparsat150929
+   organization: prjparsat150929
    space: staging
