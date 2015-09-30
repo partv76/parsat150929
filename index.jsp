@@ -18,7 +18,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Create an autocomplete input box with typeahead.js</title>
+  <title>Create an autocomplete input box</title>
   
   <!-- Bootstrap CSS Toolkit styles -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -28,11 +28,11 @@
 <body>
   <div class="container">
     <p class="example-description">Prefetches data, stores it in localStorage, and searches it on the client: </p>
-    <input id="my-input" class="typeahead" type="text" placeholder="input a country name">
+    <input id="my-input" class="typeahead" type="text" placeholder="input a employee name">
   </div>
 
   <!-- Load jQuery and the typeahead JS files -->
-  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src="js/jquery-1.10.1.min.js"></script>
   <script src="js/typeahead.min.js"></script>
   
 
