@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk6
+  - openjdk7
 services:
   - redis-server
 install: ant -buildfile build.xml  
