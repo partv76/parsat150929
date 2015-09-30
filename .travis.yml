@@ -11,4 +11,4 @@ deploy:
    password: Shiva!@#
    api: https://api.run.pivotal.io
    organization: prjparsat150929
-   space: staging
+   space: development
