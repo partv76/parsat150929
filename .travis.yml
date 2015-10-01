@@ -3,9 +3,12 @@ jdk:
   - openjdk6
 services:
   - redis-server
+script: ant -buildfile build.xml  
 deploy:
    edge: true
    provider: cloudfoundry
    username: parthasarathy.x.veerabaghu@verizon.com
    password: Shiva!@#
    api: https://api.run.pivotal.io
+   organization: prjparsat150929
+   space: development
