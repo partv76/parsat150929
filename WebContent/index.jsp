@@ -11,7 +11,7 @@ try {
 	String strAddName = request.getParameter("addNames");
     String vcap_services = System.getenv("VCAP_SERVICES");
     System.out.println("vcap_services="+vcap_services);
-    out.println("vcap_services="+vcap_services);out.println("<br>");
+    //out.println("vcap_services="+vcap_services);out.println("<br>");
     if (vcap_services != null && vcap_services.length() > 0) {
         // parsing rediscloud credentials
         JsonRootNode root = new JdomParser().parse(vcap_services);
@@ -26,9 +26,9 @@ try {
                 credentials.getStringValue("password"));
         */
    
-        out.println("Hostname="+credentials.getStringValue("hostname"));out.println("<br>");
-        out.println("Port="+credentials.getStringValue("port"));out.println("<br>");
-        out.println("Password="+credentials.getStringValue("password"));out.println("<br>");
+        //out.println("Hostname="+credentials.getStringValue("hostname"));out.println("<br>");
+        //out.println("Port="+credentials.getStringValue("port"));out.println("<br>");
+        //out.println("Password="+credentials.getStringValue("password"));out.println("<br>");
 
 
 Jedis jedis = new Jedis(credentials.getStringValue("hostname"), Integer.parseInt(credentials.getStringValue("port")));
@@ -38,10 +38,10 @@ System.out.println("Connected to Redis");
 out.println("Connected to Redis");
 
 
-	if (strAddName == "yes") {
+	if (strAddName.equals("yes")) {
 		jedis.set("Name", "[\"partha\", \"sathiya\"]");
 		String values = jedis.get("Name");
-		out.println("Values="+values);
+		out.println("Values got from Redis!!!="+values);
 	}
     }
 } catch (Exception ex) {
