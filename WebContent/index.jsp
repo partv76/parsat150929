@@ -38,14 +38,10 @@ System.out.println("Connected to Redis");
 out.println("<h3><font color=darkgreen>Connected to Redis!!!</font></h3>");
 
 
-	if (strAddName != null && strAddName.length() > 0) {
-		//jedis.append("Name", "[\"partha\", \"sathiya\"]");
-		jedis.append("Name", strAddName);
-		values = jedis.get("Name");
-		out.println("<br>");
-		out.println("<h4><font color=darkgreen>Values got from Redis!!!="+values + "</font></h4>");
-	}
-    }
+	jedis.set("Names", "[\"partha\", \"sathiya\"]");
+	values = jedis.get("Names");
+	out.println("<br>");
+	out.println("<h4><font color=darkgreen>Values got from Redis!!!="+values + "</font></h4>");    }
 } catch (Exception ex) {
     // vcap_services could not be parsed.
 	System.out.println("ex"+ex.toString());
