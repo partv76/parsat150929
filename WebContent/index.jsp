@@ -1,8 +1,42 @@
 <!DOCTYPE HTML>
 <%@ page import="redis.clients.jedis.Jedis" %>
+<%@ page import="redis.clients.jedis.JedisPool" %>
+<%@ page import="redis.clients.jedis.JedisPoolConfig" %>
+<%@ page import="redis.clients.jedis.*" %>
+<%@ page import="argo.jdom.*" %>
 
 <%
 
+try {
+    String vcap_services = System.getenv("VCAP_SERVICES");
+    System.out.println("vcap_services="+vcap_services);
+    if (vcap_services != null && vcap_services.length() > 0) {
+        // parsing rediscloud credentials
+        JsonRootNode root = new JdomParser().parse(vcap_services);
+        JsonNode rediscloudNode = root.getNode("rediscloud");
+        JsonNode credentials = rediscloudNode.getNode(0).getNode("credentials");
+
+        /*
+        JedisPool pool = new JedisPool(new JedisPoolConfig(),
+                credentials.getStringValue("hostname"),
+                Integer.parseInt(credentials.getNumberValue("port")),
+                Protocol.DEFAULT_TIMEOUT,
+                credentials.getStringValue("password"));
+        */
+   
+
+
+
+Jedis jedis = new Jedis(credentials.getStringValue("hostname"), Integer.parseInt(credentials.getNumberValue("port")));
+jedis.auth(credentials.getStringValue("password"));
+System.out.println("Connected to Redis");
+    }
+} catch (Exception ex) {
+    // vcap_services could not be parsed.
+	System.out.println("ex"+ex.toString());
+}
+
+/*
       //Connecting to Redis server on localhost
       Jedis jedis = new Jedis("localhost");
       System.out.println("Connection to server sucessfully");
@@ -11,7 +45,7 @@
 	  
     String value = jedis.get("Names");
 	System.out.println("Value: "+value);
-	
+	*/
 
 
 %>
@@ -47,9 +81,9 @@
         //name: 'countries',
 
         // data source 
-        //prefetch: 'data/countries.json',
+        prefetch: 'countries.json',
 		
-		local: <%= value%>,
+		
 
         // max item numbers list in the dropdown
         limit: 10
