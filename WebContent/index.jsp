@@ -6,7 +6,7 @@
 <%@ page import="argo.jdom.*" %>
 
 <%
-
+String values = "";
 try {
 	String strAddName = request.getParameter("addNames");
     String vcap_services = System.getenv("VCAP_SERVICES");
@@ -35,13 +35,15 @@ Jedis jedis = new Jedis(credentials.getStringValue("hostname"), Integer.parseInt
 jedis.auth(credentials.getStringValue("password"));
 out.println("<br>");out.println("<br>");
 System.out.println("Connected to Redis");
-out.println("Connected to Redis");
+out.println("<h3><font color=darkgreen>Connected to Redis!!!</font></h3>");
 
 
-	if (strAddName.equals("yes")) {
-		jedis.set("Name", "[\"partha\", \"sathiya\"]");
-		String values = jedis.get("Name");
-		out.println("Values got from Redis!!!="+values);
+	if (strAddName != null && strAddName.length() > 0) {
+		//jedis.append("Name", "[\"partha\", \"sathiya\"]");
+		jedis.append("Name", strAddName);
+		values = jedis.get("Name");
+		out.println("<br>");
+		out.println("<h4><font color=darkgreen>Values got from Redis!!!="+values + "</font></h4>");
 	}
     }
 } catch (Exception ex) {
@@ -96,8 +98,8 @@ out.println("Connected to Redis");
         //name: 'countries',
 
         // data source 
-        prefetch: 'countries.json',
-		
+        //prefetch: 'countries.json',
+      	local: <%= values%>,
 		
 
         // max item numbers list in the dropdown
