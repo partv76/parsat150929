@@ -91,3 +91,4 @@ pub-redis-11190.us-east-1-2.5.ec2.garantiadata.com:11190
 
 redis://rediscloud:pub-redis-11190.us-east-1-2.5.ec2.garantiadata.com:11190
 
+
