@@ -51,6 +51,14 @@ if (strAddName != null && strAddName.equals("employee")) {
 	combStore += "\"search keyword 10000\"]";
 	jedis.set("testdata", combStore);
 	values = jedis.get("testdata");
+} else if (strAddName != null && strAddName.equals("halfmillion")) {
+	String combStore = "[";
+	for (int i=1; i<500000; i++) {
+		combStore += "\"half million " +i + "\","; 
+	}
+	combStore += "\"half million 500000\"]";
+	jedis.set("halfmillion", combStore);
+	values = jedis.get("halfmillion");
 } else {
 	jedis.set("Names", "[\"partha\", \"sathiya\"]");
 	values = jedis.get("Names");
